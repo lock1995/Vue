@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>markdown</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#container{
+			width: 810px;
+			margin: 80px auto;
+			height: 600px;
+		}
+		h1{
+			margin-bottom: 10px;
+		}
+		#edit, #show{
+			background-color: #fff;
+			border: 1px solid #ccc;
+			float: left;
+			width: 400px;
+			height: 100%;
+		}
+		#show{
+			border-left: none;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="container">
+		<h1>markdown编辑器</h1>
+		<textarea id="edit" v-model="input"></textarea>
+		<div id="show" v-html="input | marked"></div>
+	</div>
+
+	<script src="js/marked.min.js"></script>
+	<script src="js/vue.js"></script>
+	<script>
+		new Vue({
+			el: '#container',
+			data: {
+				input: '# Hello'
+			},
+			filters: {
+				marked: marked
+			}
+		});
+	</script>
+</body>
+</html>
